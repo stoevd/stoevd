@@ -1,2 +1,3 @@
 ﻿  Fahrenheit-Celsius.cpp
-  Fahrenheit-Celsius.vcxproj -> C:\Users\User\documents\visual studio 2015\Projects\Fahrenheit-Celsius\Debug\Fahrenheit-Celsius.exe
+c:\users\user\documents\github\stoevd\fahrenheit-celsius\fahrenheit-celsius\fahrenheit-celsius.cpp(182): warning C4101: 'c': unreferenced local variable
+  Fahrenheit-Celsius.vcxproj -> C:\Users\User\Documents\GitHub\stoevd\Fahrenheit-Celsius\Debug\Fahrenheit-Celsius.exe
