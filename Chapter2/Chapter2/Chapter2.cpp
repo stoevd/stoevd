@@ -3,7 +3,7 @@
 #include <string.h>
 
 
-
+#define CHECK_BIT(var,pos) ((var) & (1<<(pos)))
 
 //2-2
 
@@ -193,11 +193,14 @@
 //}
 
 // 3)
+
 //int isPowerOfTwo(int x);
 //
 //int main()
 //{
-//
+//	int x = 128;
+//	isPowerOfTwo(x);
+//	printf("%d\n",isPowerOfTwo(x));
 //}
 //
 //int isPowerOfTwo(int x)
@@ -205,4 +208,21 @@
 //	/*while (((x % 2) == 0) && x > 1)
 //		x /= 2;
 //	return (x == 1);*/
+//	return ((x != 0) && !(x & (x - 1)));
 //}
+
+// 4)
+
+int checkonebitset(int x);
+
+int main()
+{
+	int x = 7;
+	checkonebitset(x);
+	printf("%d\n", checkonebitset(x));
+}
+
+int checkonebitset(int x)
+{
+	return ((x != 0) && !(x & (x - 1)));
+}
