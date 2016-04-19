@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-#define CHECK_BIT(var,pos) ((var) & (1<<(pos)))
-
 //2-2
 
 //int main()
@@ -213,16 +210,59 @@
 
 // 4)
 
-int checkonebitset(int x);
+//int checkonebitset(int x);
+//
+//int main()
+//{
+//	int x = 4;
+//	checkonebitset(x);
+//	printf("%d\n", checkonebitset(x));
+//}
+//
+//int checkonebitset(int x)
+//{
+//	return ((x != 0) && !(x & (x - 1)));
+//}
 
-int main()
-{
-	int x = 7;
-	checkonebitset(x);
-	printf("%d\n", checkonebitset(x));
-}
+// 5)
 
-int checkonebitset(int x)
-{
-	return ((x != 0) && !(x & (x - 1)));
-}
+//int checkParity(int x);
+//
+//int main()
+//{
+//	int x = 11;
+//	if (checkParity(x) % 2 == 0)
+//	{
+//		printf("%d\n", 0);
+//	}
+//	else
+//	{
+//		printf("%d\n", 1);
+//	}
+//	printf("%d\n",checkParity(x));
+//}
+//
+//int checkParity(int x)
+//{
+//	int count;
+//	for (count = 0; x; count++)
+//		x &= x - 1;
+//	return count;
+//}
+
+// 6)
+
+//int main()
+//{
+//	int a, b;
+//
+//	scanf("%d%d", &a, &b);
+//
+//	printf("a = %d\nb = %d\n", a, b);
+//
+//	a = a ^ b;
+//	b = a ^ b;
+//	a = a ^ b;
+//
+//	printf("a = %d\nb = %d\n", a, b);
+//}
