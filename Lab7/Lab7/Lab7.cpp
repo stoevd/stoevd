@@ -24,19 +24,37 @@ int main()
 						"\tc - to perform multiplication;\n"
 						"\td - to perform division;\n"
 						"\te - to perform exponentiation;\n"
-						"\tChose option a - e: "};
+						"\tf - to quit;\n"
+						"\tChose option a - f: " };
 
-	
-	double result;
-	char operation = getMenuChoice(menu, 'a', 'e');
+	char operation = getMenuChoice(menu, 'a', 'f');
 	double op1;
-	printf("Enter fisrt value: ");
-	scanf("%lf", &op1);
 	double op2;
-	printf("Enter second value: ");
-	scanf("%lf", &op2);
-	result = apply(operation, op1, op2);
-	printf("%lf\n", result);
+	double result;
+
+	while (operation)
+	{
+		if (operation == 'f') { break; }
+
+		do {
+			printf("Enter first value with digits!: ");
+			scanf("%lf", &op1);
+			fseek(stdin, 0, SEEK_END);
+		} while ((op1 < -3.4e38 || op1 > 3.4e38));
+
+		do {
+			printf("Enter second value with digits!: ");
+			scanf("%lf", &op2);
+			fseek(stdin, 0, SEEK_END);
+		} while ((op2 < -3.4e38 || op2 > 3.4e38));
+
+		result = apply(operation, op1, op2);
+
+		printf("\nThe result is %lf \n\n", result);
+
+		operation = getMenuChoice(menu, 'a', 'f');
+
+	}
 }
 
 char getMenuChoice(const char menu[], char choice1, char choice2)
@@ -66,6 +84,5 @@ double apply(char operation, double op1, double op2)
 		return op1 / op2;
 	case 'e':
 		return pow(op1, op2);
-	//default: return 0;?
 	}
 }
