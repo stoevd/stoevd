@@ -35,18 +35,30 @@ int main()
 	while (operation)
 	{
 		if (operation == 'f') { break; }
-
+		bool temp;
 		do {
+			temp = false;
 			printf("Enter first value with digits!: ");
 			scanf("%lf", &op1);
 			fseek(stdin, 0, SEEK_END);
-		} while ((op1 < -3.4e38 || op1 > 3.4e38));
+			if (op1 < -3.4e38 || op1 > 3.4e38)
+			{
+				temp = true;
+				printf("ERROR - bad input!!!!!\n");
+			}
+		} while (temp);
 
 		do {
+			temp = false;
 			printf("Enter second value with digits!: ");
 			scanf("%lf", &op2);
 			fseek(stdin, 0, SEEK_END);
-		} while ((op2 < -3.4e38 || op2 > 3.4e38));
+			if (op2 < -3.4e38 || op2 > 3.4e38)
+			{
+				temp = true;
+				printf("ERROR - bad input!!!!!\n");
+			}
+		} while (temp);
 
 		result = apply(operation, op1, op2);
 
