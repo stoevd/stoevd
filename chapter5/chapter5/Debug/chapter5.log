@@ -1,4 +1,7 @@
 ﻿  Chapter5.cpp
 c:\users\user\documents\visual studio 2015\projects\chapter5\chapter5\chapter5.cpp(3): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
   c:\users\user\documents\visual studio 2015\projects\chapter5\chapter5\chapter5.cpp(3): note: command-line arguments:  see previous definition of '_CRT_SECURE_NO_WARNINGS'
+c:\users\user\documents\visual studio 2015\projects\chapter5\chapter5\chapter5.cpp(157): warning C4101: 'dat': unreferenced local variable
+c:\users\user\documents\visual studio 2015\projects\chapter5\chapter5\chapter5.cpp(157): warning C4101: 'mo': unreferenced local variable
+c:\users\user\documents\visual studio 2015\projects\chapter5\chapter5\chapter5.cpp(183): warning C4715: 'day_of_year': not all control paths return a value
   chapter5.vcxproj -> C:\Users\User\documents\visual studio 2015\Projects\chapter5\Debug\chapter5.exe

@@ -94,7 +94,115 @@
 //	s[i] = '\0';
 //}
 
+//int strncmp(char *, char *, int);
+//
+//int main()
+//{
+//	char str1[] = "hello";
+//	char str2[] = "helo000";
+//	int a = strncmp(str1, str2, 2);
+//	printf("%d\n", a);
+//
+//}
+//int strncmp(char *str1, char *str2, int n)
+//{
+//	int i;
+//
+//	for (i = 0; str1[i] == str2[i]; i++)
+//	{
+//		if (str1[i] == '\0' || str2[i] == '\0' || --n <= 0)
+//		{
+//			return 0;
+//		}
+//	}
+//	return str1[i] - str2[i];
+//}
+//////////pointers
+//int strncmp(char *, char *, int);
+//
+//int main()
+//{
+//	char str1[] = "ahello";
+//	char str2[] = "helo0000";
+//	int a = strncmp(str1, str2, 3);
+//	printf("%d\n", a);
+//}
+//
+//int strncmp(char *str1, char *str2, int n)
+//{
+//	for (; *str1 == *str2; *str1++, *str2++)
+//	{
+//		if (*str1 == '\0' || --n <= 0)
+//		{
+//			return 0;
+//		}
+//	}
+//	return *str1 - *str2;
+//}
+
 //////////////////////////////////////////////
 
-//int strncmp(const char * str1, const char * str2, size_t num);
+// 5-8
 
+//static char daytab[2][13] = {
+//	{ 0,31,28,31,30,31,30,31,31,30,31,30,31 },
+//	{ 0,31,29,31,30,31,30,31,31,30,31,30,31 }
+//};
+//
+//int day_of_year(int year, int month, int day);
+//void month_day(int year, int yearday);
+//
+//int main(void)
+//{
+//	int day, mo, dat;
+//
+//	day = day_of_year(1988, 2, 29);
+//	printf("%d\n", day);
+//	month_day(2000, 60);
+//	return 0;
+//}
+//
+//int day_of_year(int year, int month, int day)
+//{
+//	int i;
+//	int leap;
+//
+//	leap = year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+//	if (year < 0)
+//	{
+//		printf("ERROR!!!!");
+//	}
+//	else
+//	{
+//		for (i = 1; i < month; i++)
+//		{
+//			day += daytab[leap][i];
+//		}
+//		return day;
+//	}
+//}
+//
+//
+//void month_day(int year, int yearday)
+//{
+//	int i;
+//	int leap;
+//
+//	leap = year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+//	if (year < 0)
+//	{
+//		printf("ERROR!!!!!");
+//	}
+//	else
+//	{
+//		for (i = 1; yearday > daytab[leap][i]; i++)
+//		{
+//			yearday -= daytab[leap][i];
+//		}
+//		printf("Month: %d, Day: %d\n", i, yearday);
+//	}
+//
+//}
+
+
+// 5-9 ??
