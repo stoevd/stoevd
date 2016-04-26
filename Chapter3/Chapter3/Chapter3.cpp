@@ -70,17 +70,17 @@ int main()
 	itoa(n, s, width);
 	printf("%s\n", s);
 
-//	/*int i;
-//	char buffer[33];
-//	printf("Enter a number: ");
-//	scanf_s("%d", &i);
-//	_itoa(i, buffer, 10);
-//	printf("decimal: %s\n", buffer);
-//	_itoa(i, buffer, 16);
-//	printf("hexadecimal: %s\n", buffer);
-//	_itoa(i, buffer, 2);
-//	printf("binary: %s\n", buffer);
-//	return 0;*/
+	/*int i;
+	char buffer[33];
+	printf("Enter a number: ");
+	scanf_s("%d", &i);
+	_itoa(i, buffer, 10);
+	printf("decimal: %s\n", buffer);
+	_itoa(i, buffer, 16);
+	printf("hexadecimal: %s\n", buffer);
+	_itoa(i, buffer, 2);
+	printf("binary: %s\n", buffer);
+	return 0;*/
 
 }
 

@@ -6,8 +6,10 @@
 
 //int main()
 //{
-//
-//	//2-2
+//	int const lim = 20;
+//	int c;
+//	int i;
+//	char s[lim];
 //
 //		if ((c = getchar()) != '\n') 
 //		{
@@ -32,7 +34,7 @@
 //	char arr[10];
 //	char temp;
 //	int j = 0;
-//	while ((temp = getchar()) != EOF)
+//	while ((temp = getchar()) != '\n')
 //	{
 //		arr[j] = temp;
 //		j++;

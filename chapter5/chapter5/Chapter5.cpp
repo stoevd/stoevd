@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
 #define _CRT_SECURE_NO_WARNINGS
+#define MAXWORD 100
 
 // 5-4
-
+//
 //int strend(char *, char *);
 //
 //int main()
@@ -23,7 +26,7 @@
 //	size_t lt = strlen(t);
 //	if (ls >= lt)
 //	{
-//		return (0 == memcmp(t, s + (ls - lt), lt));
+//		return (memcmp(t, s + (ls - lt), lt) == 0);
 //	}
 //	return 0;
 //}
@@ -47,10 +50,11 @@
 //
 //void myStrncpy(char s[], char t[], int n)
 //{
-//	int i = 0;
+//	int i = -1;
 //
-//	while (s[i] = t[i], n-- && t[i++] != '\0')
+//	while (n-- && t[i++] != '\0')
 //	{
+//		s[i] = t[i];
 //		t[n];
 //	}
 //}
@@ -144,66 +148,140 @@
 
 // 5-8
 
-static char daytab[2][13] = {
-	{ 0,31,28,31,30,31,30,31,31,30,31,30,31 },
-	{ 0,31,29,31,30,31,30,31,31,30,31,30,31 }
-};
+//static char daytab[2][13] = {
+//	{ 0,31,28,31,30,31,30,31,31,30,31,30,31 },
+//	{ 0,31,29,31,30,31,30,31,31,30,31,30,31 }
+//};
+//
+//int day_of_year(int year, int month, int day);
+//void month_day(int year, int yearday);
+//
+//int main(void)
+//{
+//	int day;
+//
+//	day = day_of_year(2016, 2, 29);
+//	printf("%d\n", day);
+//	month_day(2016, 60);
+//	return 0;
+//}
+//
+//int day_of_year(int year, int month, int day)
+//{
+//	if (year < 0 || month <= 0 || month > 12 || day <= 0)
+//	{
+//		return -1;
+//	}
+//	int i;
+//	int leap;
+//
+//	leap = year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+//	if (day > daytab[leap][month])
+//	{
+//		return -1;
+//	}
+//	for (i = 1; i < month; i++)
+//	{
+//		day += daytab[leap][i];
+//	}
+//	return day;
+//}
+//
+//void month_day(int year, int yearday)
+//{
+//
+//	if(year < 0) 
+//	{
+//		printf("Error! Invalid year!\n");
+//	}
+//	else
+//	{
+//		int i;
+//		int leap;
+//
+//		leap = year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+//
+//		for (i = 1; yearday > daytab[leap][i]; i++)
+//		{
+//			yearday -= daytab[leap][i];
+//		}
+//		printf("Month: %d, Day: %d\n", i, yearday);
+//	}
+//}
 
-int day_of_year(int year, int month, int day);
-void month_day(int year, int yearday);
 
-int main(void)
-{
-	int day, mo, dat;
+// 5-9 
 
-	day = day_of_year(2016, 2, 29);
-	printf("%d\n", day);
-	month_day(2016, 60);
-	return 0;
-}
-
-int day_of_year(int year, int month, int day)
-{
-	if (year < 0 || month <= 0 || month > 12 || day <= 0)
-	{
-		return -1;
-	}
-	int i;
-	int leap;
-
-	leap = year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
-	if (day > daytab[leap][month])
-	{
-		return -1;
-	}
-	for (i = 1; i < month; i++)
-	{
-		day += daytab[leap][i];
-	}
-	return day;
-}
-
-void month_day(int year, int yearday)
-{
-
-	if(year < 0) 
-	{
-		printf("Error! Invalid year!\n");
-	}
-	else
-	{
-		int i;
-		int leap;
-
-		leap = year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
-
-		for (i = 1; yearday > daytab[leap][i]; i++)
-		{
-			yearday -= daytab[leap][i];
-		}
-		printf("Month: %d, Day: %d\n", i, yearday);
-	}
-}
-
-
-// 5-9 ??
+//static char daytab[2][13] = {
+//	{ 0,31,28,31,30,31,30,31,31,30,31,30,31 },
+//	{ 0,31,29,31,30,31,30,31,31,30,31,30,31 }
+//};
+//
+//int day_of_year(int year, int month, int day);
+//void month_day(int year, int yearday, int *pmonth, int *pday);
+//
+//int main(void)
+//{
+//	int day;
+//	int mo;
+//	int dat;
+//
+//	day = day_of_year(2016, 2, 29);
+//	printf("%d\n", day);
+//	month_day(2016, 65, &mo, &dat);
+//	return 0;
+//}
+//
+//int day_of_year(int year, int month, int day)
+//{
+//	if (year < 0 || month <= 0 || month > 12 || day <= 0)
+//	{
+//		return -1;
+//	}
+//	int i;
+//	int leap;
+//
+//	leap = year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+//	if (day > daytab[leap][month])
+//	{
+//		return -1;
+//	}
+//	for (i = 1; i < month; i++)
+//	{
+//		day += daytab[leap][i];
+//	}
+//	return day;
+//}
+//
+//void month_day(int year, int yearday, int *pmonth, int *pday)
+//{
+//	int i;
+//	int leap;
+//
+//	if (year < 1)
+//	{
+//		*pmonth = -1;
+//		*pday = -1;
+//		return;
+//	}
+//	else
+//	{
+//		leap = year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+//
+//		for (i = 1; yearday > daytab[leap][i]; i++)
+//		{
+//			yearday -= daytab[leap][i];
+//		}
+//		printf("Month: %d, Day: %d\n", i, yearday);
+//	}
+//	if (i > 12 && yearday > daytab[leap][12])
+//	{
+//		*pmonth = -1;
+//		*pday = -1;
+//	}
+//	else
+//	{
+//		*pmonth = i;
+//		*pday = yearday;
+//	}
+//}
