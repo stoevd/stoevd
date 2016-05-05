@@ -99,8 +99,6 @@ int Pop(struct Node **headRef)
 
 void InsertNth(struct Node **headRef, int index, int data)
 {
-	//struct Node* head = NULL; // start with the empty list
-	//DeleteList(&head);
 	if (index == 0) 
 	{ 
 		Push(headRef, data);
@@ -112,16 +110,9 @@ void InsertNth(struct Node **headRef, int index, int data)
 		for (i = 0; i < index - 1; i++) 
 		{
 			assert(current != NULL);
-			// if this fails, index was too big
 			current = current->next;
 		}
 		assert(current != NULL);
-		// tricky: you have to check one last time
-		Push(&(current->next), data);
-		// Tricky use of Push() --
-		// The pointer being pushed on is not
-		// in the stack. But actually this works
-		// fine -- Push() works for any node pointer.
 	}
 }
 
