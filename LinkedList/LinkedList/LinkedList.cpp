@@ -1,11 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <cstdio>
-#include <string.h>
 #include "LinkedList.h"
 
-//Returns the number of nodes in the list.
-int Length(List head) {
+int Length(Node *head) {
 	int count = 0;
 
 	while (head != NULL) {
@@ -16,7 +11,6 @@ int Length(List head) {
 	return count;
 }
 
-// add element at the head of list
 void Push(List *head, int data) {
 	List temp;
 	temp = (List)malloc(sizeof(Node));
@@ -25,8 +19,7 @@ void Push(List *head, int data) {
 	*head = temp;
 }
 
-
-void DestroyNode(Node * head, Node * n) 
+void DestroyNode(Node *head, Node *n) 
 {
 	if (!head || !head->next)
 	{
@@ -49,7 +42,7 @@ void DestroyNode(Node * head, Node * n)
 	return;
 }
 
-int Count(Node * head, int searchFor) 
+int Count(Node *head, int searchFor) 
 {
 	struct Node *current = NULL;
 	current = head;
@@ -63,9 +56,9 @@ int Count(Node * head, int searchFor)
 	return count;
 }
 
-int GetNth(Node * head, int index)
+int GetNth(Node *head, int index)
 {
-	struct Node * current = head;
+	struct Node *current = head;
 	int count = 0;
 	while (current != NULL || index > Length(head) - 1)
 	{
@@ -77,4 +70,62 @@ int GetNth(Node * head, int index)
 		current = current->next;
 	}
 	
+}
+
+void DeleteList(struct Node **headRef) 
+{
+	struct Node *current = *headRef;
+	struct Node *head;
+	while (current != NULL) 
+	{
+		head = current->next;
+		free(current);
+		current = head;
+	}
+	*headRef = NULL;
+}
+
+int Pop(struct Node **headRef)
+{
+	struct Node* head;
+	int result;
+	head = *headRef;
+	assert(head != NULL);
+	result = head->data;
+	*headRef = head->next;
+	free(head);
+	return(result);
+}
+
+void InsertNth(struct Node **headRef, int index, int data)
+{
+	//struct Node* head = NULL; // start with the empty list
+	//DeleteList(&head);
+	if (index == 0) 
+	{ 
+		Push(headRef, data);
+	}
+	else 
+	{
+		struct Node *current = *headRef;
+		int i;
+		for (i = 0; i < index - 1; i++) 
+		{
+			assert(current != NULL);
+			// if this fails, index was too big
+			current = current->next;
+		}
+		assert(current != NULL);
+		// tricky: you have to check one last time
+		Push(&(current->next), data);
+		// Tricky use of Push() --
+		// The pointer being pushed on is not
+		// in the stack. But actually this works
+		// fine -- Push() works for any node pointer.
+	}
+}
+
+void SortedInsert(struct node **headRef, struct node *newNode)
+{
+
 }

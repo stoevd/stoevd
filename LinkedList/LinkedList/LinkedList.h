@@ -1,3 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <cstdio>
+#include <string.h>
+#include <assert.h>
+#include <assert.h>
 #pragma once
 
 
@@ -20,3 +26,11 @@ void DestroyNode(Node *, Node *);
 int Count(Node *, int);
 
 int GetNth(Node *, int);
+
+void DeleteList(struct Node **);
+
+int Pop(struct Node **);
+
+void InsertNth(struct Node **, int, int);
+
+void SortedInsert(struct node **, struct node *);
