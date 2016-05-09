@@ -33,4 +33,12 @@ int Pop(struct Node **);
 
 void InsertNth(struct Node **, int, int);
 
-void SortedInsert(struct node **, struct node *);
+void SortedInsert(struct Node **, struct Node *);
+
+void InsertSort(struct Node **);
+
+void Append(struct Node **, struct Node **);
+
+void FrontBackSplit(struct Node *, struct Node **, struct Node **);
+
+void RemoveDuplicates(struct Node *);
