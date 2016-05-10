@@ -1,2 +1,5 @@
 ﻿  Main.cpp
+  LinkedList.cpp
+  Generating Code...
+c:\users\user\documents\visual studio 2015\projects\linkedlist\linkedlist\linkedlist.cpp(73): warning C4715: 'GetNth': not all control paths return a value
   LinkedList.vcxproj -> C:\Users\User\documents\visual studio 2015\Projects\LinkedList\Debug\LinkedList.exe

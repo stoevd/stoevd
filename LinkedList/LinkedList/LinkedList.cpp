@@ -19,7 +19,7 @@ void Push(List *head, int data) {
 	*head = temp;
 }
 
-void DestroyNode(Node *head, Node *n) 
+void DestroyNode(List head, List n)
 {
 	if (!head || !head->next)
 	{
@@ -42,9 +42,9 @@ void DestroyNode(Node *head, Node *n)
 	return;
 }
 
-int Count(Node *head, int searchFor) 
+int Count(List head, int searchFor)
 {
-	struct Node *current = NULL;
+	List current = NULL;
 	current = head;
 	int count = 0;
 	while (current != NULL) 
@@ -56,9 +56,9 @@ int Count(Node *head, int searchFor)
 	return count;
 }
 
-int GetNth(Node *head, int index)
+int GetNth(List head, int index)
 {
-	struct Node *current = head;
+	List current = head;
 	int count = 0;
 	while (current != NULL || index > Length(head) - 1)
 	{
@@ -72,10 +72,10 @@ int GetNth(Node *head, int index)
 	
 }
 
-void DeleteList(struct Node **headRef) 
+void DeleteList(List *headRef)
 {
-	struct Node *current = *headRef;
-	struct Node *head;
+	List current = *headRef;
+	List head;
 	while (current != NULL) 
 	{
 		head = current->next;
@@ -85,9 +85,9 @@ void DeleteList(struct Node **headRef)
 	*headRef = NULL;
 }
 
-int Pop(struct Node **headRef)
+int Pop(List *headRef)
 {
-	struct Node* head;
+	List head;
 	int result;
 	head = *headRef;
 	assert(head != NULL);
@@ -97,7 +97,7 @@ int Pop(struct Node **headRef)
 	return(result);
 }
 
-void InsertNth(struct Node **headRef, int index, int data)
+void InsertNth(List *headRef, int index, int data)
 {
 	if (index == 0) 
 	{ 
@@ -105,7 +105,7 @@ void InsertNth(struct Node **headRef, int index, int data)
 	}
 	else 
 	{
-		struct Node *current = *headRef;
+		List current = *headRef;
 		int i;
 		for (i = 0; i < index - 1; i++) 
 		{
@@ -117,7 +117,7 @@ void InsertNth(struct Node **headRef, int index, int data)
 	}
 }
 
-void SortedInsert(struct Node **headRef, struct Node *newNode)
+void SortedInsert(List *headRef, List newNode)
 {
 	/*struct Node **current = headRef;
 	if ((*current)->data < newNode->data)
@@ -130,7 +130,7 @@ void SortedInsert(struct Node **headRef, struct Node *newNode)
 		Push(&newNode, (*current)->data);
 	}
 }*/
-	struct Node **current = headRef;
+	List *current = headRef;
 	while (*current != NULL && (*current)->data < newNode->data) 
 	{
 		current = &((*current)->next);
@@ -139,10 +139,10 @@ void SortedInsert(struct Node **headRef, struct Node *newNode)
 	*current = newNode;
 }
 
-void InsertSort(struct Node **headRef)
+void InsertSort(List *headRef)
 {
-	struct Node *result = NULL;
-	struct Node *temp;
+	List result = NULL;
+	List temp;
 	while (*headRef != NULL) 
 	{
 		temp = (*headRef)->next;
@@ -152,9 +152,9 @@ void InsertSort(struct Node **headRef)
 	*headRef = result;
 }
 
-void Append(struct Node **aRef, struct Node **bRef)
+void Append(List *aRef, List *bRef)
 {
-	struct Node * temp;
+	List temp;
 	temp = *aRef;
 	while (temp->next != NULL)
 	{
@@ -164,9 +164,9 @@ void Append(struct Node **aRef, struct Node **bRef)
 	*bRef = NULL;
 }
 
-void FrontBackSplit(struct Node* source, struct Node** frontRef, struct Node** backRef)
+void FrontBackSplit(List source, List *frontRef, List *backRef)
 {
-	struct Node * current = source;
+	List current = source;
 	int len = Length(source);
 	int index;
 
@@ -188,7 +188,7 @@ void FrontBackSplit(struct Node* source, struct Node** frontRef, struct Node** b
 	}
 }
 
-void RemoveDuplicates(struct Node* head)
+void RemoveDuplicates(List head)
 {
 	struct Node * current = head;
 	//struct Node * temp = current->next->next;
@@ -197,7 +197,7 @@ void RemoveDuplicates(struct Node* head)
 	{
 		if (current->data == current->next->data)
 		{
-			struct Node * temp = current->next->next;
+			List temp = current->next->next;
 			free(current->next);
 			current->next = temp;
 		}
@@ -206,4 +206,100 @@ void RemoveDuplicates(struct Node* head)
 			current = current->next;
 		}
 	}
+}
+
+
+void MoveNode(List *destRef, List *sourceRef)
+{
+	/*assert(sourceRef != NULL); //dont work in Alternating split?
+	Push(destRef, Pop(sourceRef));
+	DeleteList(sourceRef);*/
+	///////////////////
+	/*List curr = *sourceRef;
+	assert(curr != NULL);
+	*sourceRef = curr->next;
+	*destRef = curr;*/
+
+	List curr = *sourceRef;
+	*sourceRef = (*sourceRef)->next;
+	curr->next = *destRef;
+	*destRef = curr;
+}
+
+void AlternatingSplit(List source, List *aRef, List *bRef)
+{
+	while (source != NULL)
+	{
+		MoveNode(&(*aRef), &source);
+		if (source != NULL)
+		{
+			MoveNode(&(*bRef), &source);
+		}
+	}
+}
+
+List ShuffleMerge(List a, List b)
+{
+	struct Node node;
+	List curr = &node;
+	node.next = NULL;
+	while (a != NULL && b != NULL)
+	{
+		curr->next = a;
+		curr = a;
+		a = a->next;
+		curr->next = b;
+		curr = b;
+		b = b->next;
+	}
+	return(node.next);
+}
+
+List SortedMerge(List a, List b)
+{
+	struct Node result;
+	struct Node *curr = &result;
+	result.next = NULL;
+	while (true)
+	{
+		if (a == NULL)
+		{
+			curr->next = b;
+			break;
+		}
+		else if (b == NULL)
+		{
+			curr->next = a;
+			break;
+		}
+		if (a->data <= b->data)
+		{
+			MoveNode(&(curr->next), &a);
+		}
+		else
+		{
+			MoveNode(&(curr->next), &b);
+		}
+		curr = curr->next;
+	}
+	return (result.next);
+}
+
+void MergeSort(List *headRef)
+{
+	List head = *headRef;
+	List a;
+	List b;
+
+	// Base case -- length 0 or 1
+	if ((head == NULL) || (head->next == NULL)) {
+		return;
+	}
+	FrontBackSplit(head, &a, &b);
+	// Split head into 'a' and 'b' sublists
+	// We could just as well use AlternatingSplit()
+	MergeSort(&a);
+	// Recursively sort the sublists
+	MergeSort(&b);
+	*headRef = SortedMerge(a, b);
 }

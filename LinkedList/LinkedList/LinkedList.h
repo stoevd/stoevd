@@ -21,24 +21,34 @@ int Length(List);
 
 void Push(List *, int);
 
-void DestroyNode(Node *, Node *);
+void DestroyNode(List, List);
 
-int Count(Node *, int);
+int Count(List, int);
 
-int GetNth(Node *, int);
+int GetNth(List, int);
 
-void DeleteList(struct Node **);
+void DeleteList(List*);
 
-int Pop(struct Node **);
+int Pop(List*);
 
-void InsertNth(struct Node **, int, int);
+void InsertNth(List*, int, int);
 
-void SortedInsert(struct Node **, struct Node *);
+void SortedInsert(List*, List);
 
-void InsertSort(struct Node **);
+void InsertSort(List*);
 
-void Append(struct Node **, struct Node **);
+void Append(List*, List*);
 
-void FrontBackSplit(struct Node *, struct Node **, struct Node **);
+void FrontBackSplit(List, List*, List*);
 
-void RemoveDuplicates(struct Node *);
+void RemoveDuplicates(List);
+
+void MoveNode(List *, List *);
+
+void AlternatingSplit(List, List*, List*);
+
+struct Node *ShuffleMerge(List, List);
+
+struct Node *SortedMerge(List, List);
+
+void MergeSort(List *);
