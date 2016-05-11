@@ -52,3 +52,9 @@ struct Node *ShuffleMerge(List, List);
 struct Node *SortedMerge(List, List);
 
 void MergeSort(List *);
+
+List SortedIntersect(List, List);
+
+void Reverse(List *);
+
+void RecursiveReverse(List *);

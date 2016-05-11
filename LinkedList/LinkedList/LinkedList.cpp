@@ -291,15 +291,52 @@ void MergeSort(List *headRef)
 	List a;
 	List b;
 
-	// Base case -- length 0 or 1
 	if ((head == NULL) || (head->next == NULL)) {
 		return;
 	}
 	FrontBackSplit(head, &a, &b);
-	// Split head into 'a' and 'b' sublists
-	// We could just as well use AlternatingSplit()
 	MergeSort(&a);
-	// Recursively sort the sublists
 	MergeSort(&b);
 	*headRef = SortedMerge(a, b);
+}
+
+List SortedIntersect(List a, List b)
+{
+	List result = NULL;
+	while (a != NULL && b != NULL)
+	{
+		if (a->data == b->data)
+		{
+			Push(&result, a->data);
+			b = b->next;
+		}
+		else if (a->data < b->data)
+		{
+			a = a->next;
+		}
+		else
+		{
+			a = a->next;
+		}
+	}
+	return result;
+}
+
+void Reverse(List *headRef)
+{
+	List result = NULL;
+	List current = *headRef;
+	List next;
+	while (current != NULL)
+	{
+		next = current->next;
+		current->next = result;
+		result = current;
+		current = next;
+	}
+	*headRef = result;
+}
+
+void RecursiveReverse(List *headRef) 
+{
 }
