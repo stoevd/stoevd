@@ -324,7 +324,7 @@ List SortedIntersect(List a, List b)
 
 void Reverse(List *headRef)
 {
-	List result = NULL;
+	/*List result = NULL;
 	List current = *headRef;
 	List next;
 	while (current != NULL)
@@ -334,9 +334,27 @@ void Reverse(List *headRef)
 		result = current;
 		current = next;
 	}
-	*headRef = result;
+	*headRef = result;*/
+
+	///////////// Reverse 2
+	List current = *headRef;
+	if (current == NULL)
+	{
+		return;
+	}
+	Reverse(&current->next);
+	printf("%d ", current->data);
+
 }
 
 void RecursiveReverse(List *headRef) 
 {
+	List current = *headRef;
+	if (current->next == NULL)
+	{
+		return;
+	}
+	Reverse(&current->next);
+	current->next->next = current;
+	current->next = NULL;
 }
